@@ -2,13 +2,28 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AddressBook"
-             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              x:Class="AddressBook.MainPage"
-             Title="Address Book">
-
-    <StackLayout>
-        <maps:Map  x:Name="map"
-                  VerticalOptions="FillAndExpand" />
+             Title="Address Book" Appearing="MainPage_OnAppearing">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="plus.png" Clicked="AddContactsToolbar"/>
+    </ContentPage.ToolbarItems>
+    <StackLayout Padding="5" Visual="Material">
+        <Entry Visual="Default" x:Name="EntrySearch" Placeholder="Search" TextChanged="EntrySearch_OnTextChanged"/>
+        <ListView CachingStrategy="RecycleElement" x:Name="ListViewMain">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Clicked="ListOnDelete" CommandParameter="{Binding .}"
+                                      Text="Delete" IsDestructive="True" />
+                        </ViewCell.ContextActions>
+                        <StackLayout Padding="15,0">
+                            <Label Text="{Binding Name}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+       </ListView>
         
     </StackLayout>
 

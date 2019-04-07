@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using AddressBook.Database;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,10 +9,11 @@ namespace AddressBook
 {
     public partial class App : Application
     {
+        public static Database.DatabaseConnection DbConnection;
         public App()
         {
             InitializeComponent();
-
+            DbConnection = new DatabaseConnection(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Contacts.db3"));
             MainPage = new NavigationPage(new MainPage());
         }
 
