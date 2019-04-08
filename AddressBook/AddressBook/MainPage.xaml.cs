@@ -26,7 +26,7 @@ namespace AddressBook
                 ContactsCollection.Add(new ContactToShow
                 {
                     ID = i.ID,
-                    Name = i.FirstName + " " + i.LastName
+                    //Name = i.FirstName + " " + i.LastName
                 });
             }
         }
@@ -42,7 +42,9 @@ namespace AddressBook
 
         private async void AddContactsToolbar(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddContact());
+            //await Navigation.PushAsync(new AddContact());
+            var i = App.ContactsFetcher.GetContactInfo();
+            Console.WriteLine("help");
         }
         public class ContactToShow
         {
