@@ -36,7 +36,7 @@ namespace AddressBook.Droid
                 }
                 //Phone
                 {
-                    List<PhonesSave> phonesary = new List<PhonesSave>();
+                    List<PhonesSave> phonesAry = new List<PhonesSave>();
                     var phones = Application.Context.ContentResolver.Query(
                         ContactsContract.CommonDataKinds.Phone.ContentUri,
                         null,
@@ -45,12 +45,12 @@ namespace AddressBook.Droid
                     // getting phone numbers 
                     while (phones.MoveToNext())
                     {
-                        phonesary.Add(new PhonesSave{
+                        phonesAry.Add(new PhonesSave{
                             Phone = phones.GetString( phones.GetColumnIndex(ContactsContract.CommonDataKinds.Phone.Number))
                         });
                     }
                     phones.Close();
-                    info.Phones = phonesary.ToArray();
+                    info.Phones = Newtonsoft.Json.JsonConvert.SerializeObject(phonesAry.ToArray());
                 }
                 infos.Add(info);
             }
