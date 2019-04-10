@@ -5,9 +5,9 @@
              x:Class="AddressBook.MainPage"
              Title="Address Book" Appearing="MainPage_OnAppearing">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="plus.png" Clicked="AddContactsToolbar"/>
+        <ToolbarItem Text="+" Clicked="AddContactsToolbar"/>
     </ContentPage.ToolbarItems>
-    <StackLayout Padding="5" Visual="Material">
+    <StackLayout Padding="10" Visual="Material">
         <Entry Visual="Default" x:Name="EntrySearch" Placeholder="Search" TextChanged="EntrySearch_OnTextChanged"/>
         <ListView CachingStrategy="RecycleElement" x:Name="ListViewMain">
             <ListView.ItemTemplate>

@@ -25,14 +25,16 @@ namespace AddressBook.Droid
                     var postals = cr.Query(ContactsContract.CommonDataKinds.StructuredPostal.ContentUri,
                         null, "contact_id" + " = " + id,null,null);
                     int postFormattedNdx = postals.GetColumnIndex(ContactsContract.CommonDataKinds.StructuredPostal.FormattedAddress);
+                    int i = 1;
                     while (postals.MoveToNext()) {
                         addresses.Add(new AddressSave
                         {
+                            Label = "Address " + (i++),
                             Address = postals.GetString(postFormattedNdx)
                         });
                     }
                     postals.Close(); 
-                    info.Addresses = addresses.ToArray();
+                    info.Addresses = Newtonsoft.Json.JsonConvert.SerializeObject(addresses.ToArray());
                 }
                 //Phone
                 {
@@ -43,9 +45,11 @@ namespace AddressBook.Droid
                         ContactsContract.CommonDataKinds.Phone.InterfaceConsts.ContactId
                         + " = " + id, null, null);
                     // getting phone numbers 
+                    int i = 1;
                     while (phones.MoveToNext())
                     {
                         phonesAry.Add(new PhonesSave{
+                            Label = "Phone " + (i++),
                             Phone = phones.GetString( phones.GetColumnIndex(ContactsContract.CommonDataKinds.Phone.Number))
                         });
                     }

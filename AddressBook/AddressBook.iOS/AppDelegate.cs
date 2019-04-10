@@ -26,7 +26,7 @@ namespace AddressBook.iOS
             Xamarin.FormsGoogleMaps.Init("AIzaSyAdU4gMmEX88mWbJyJ9zv0i_ar9uhCyJEU");
             global::Xamarin.Forms.FormsMaterial.Init();
             LoadApplication(new App());
-
+            App.InitContactsFetcher(new ContactsFetcher());
             return base.FinishedLaunching(app, options);
         }
     }

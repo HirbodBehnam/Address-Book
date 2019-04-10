@@ -10,7 +10,7 @@ namespace AddressBook.Database
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         /// <summary>
-        /// Name of contact
+        /// Label of contact
         /// </summary>
         public string Name { get; set; }
         /// <summary>
@@ -24,7 +24,7 @@ namespace AddressBook.Database
     }
     public class PhonesSave
     {
-        public string Name{get;set;}
+        public string Label{get;set;}
         public string Phone{get;set;}
     }
     public class AddressSave
@@ -32,5 +32,6 @@ namespace AddressBook.Database
         public float Longitude { get; set; }
         public float Latitude { get; set; }
         public string Address { get; set; }
+        public string Label { get; set; }
     }
 }
